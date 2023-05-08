@@ -113,8 +113,9 @@ onMounted(() => {
   initPeer();
   document.addEventListener(
     "WeixinJSBridgeReady",
-    function () {
-      (document.getElementById("remoteVideo") as any).play();
+    () => {
+      video1.value.play()
+      video2.value.play()
     },
     false
   );
