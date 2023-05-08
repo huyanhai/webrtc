@@ -30,8 +30,8 @@ import Peer from "peerjs";
 import { onMounted, ref } from "vue";
 
 let peer = ref<Peer>();
-const video1 = ref()
-const video2 = ref()
+const video1 = ref();
+const video2 = ref();
 // 本地id
 const localId = ref("");
 // 远程Id
@@ -44,7 +44,7 @@ const messages = ref<string[]>([]);
 
 const getUserMedia = (constraints: MediaStreamConstraints) => {
   return navigator.mediaDevices.getUserMedia(constraints);
-}
+};
 
 // 建立链接
 function connection() {
@@ -57,19 +57,17 @@ function connection() {
 // 推送本地视频给远端
 async function getLocalStream(constraints: MediaStreamConstraints) {
   const stream = await getUserMedia(constraints);
-  
+
   const call = peer.value?.call(remoteId.value, stream);
 
-  video1.value.srcObject = stream
-  
-  call?.on("stream",(remoteStream)=>{
-    video2.value.srcObject = remoteStream
-  })
+  video1.value.srcObject = stream;
+
+  call?.on("stream", (remoteStream) => {
+    video2.value.srcObject = remoteStream;
+  });
 }
 
-
 // 远端
-
 
 // 发送消息
 const sendMsg = () => {
@@ -98,21 +96,28 @@ const initPeer = () => {
     });
   });
 
-  peer.value.on("call",async (call)=>{
+  peer.value.on("call", async (call) => {
     const stream = await getUserMedia({
-      video:true,
-      audio:false
+      video: true,
+      audio: false,
     });
-    video1.value.srcObject = stream
+    video1.value.srcObject = stream;
     call.answer(stream);
-    call.on("stream",(remoteStream)=>{
-      video2.value.srcObject = remoteStream
-    })
-  })
+    call.on("stream", (remoteStream) => {
+      video2.value.srcObject = remoteStream;
+    });
+  });
 };
 
 onMounted(() => {
   initPeer();
+  document.addEventListener(
+    "WeixinJSBridgeReady",
+    function () {
+      (document.getElementById("remoteVideo") as any).play();
+    },
+    false
+  );
 });
 </script>
 
