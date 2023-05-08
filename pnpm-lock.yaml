@@ -9,11 +9,13 @@ specifiers:
   vite: ^4.3.2
   vue: ^3.2.47
   vue-tsc: ^1.4.2
+  webrtc-adapter: ^8.2.2
 
 dependencies:
   peerjs: 1.4.7
   vconsole: 3.15.0
   vue: 3.2.47
+  webrtc-adapter: 8.2.2
 
 devDependencies:
   '@vitejs/plugin-vue': 4.2.1_vite@4.3.5+vue@3.2.47
@@ -717,6 +719,10 @@ packages:
     resolution: {integrity: sha512-jhXqQAQVM+8Xj5EjJGVweuEzgtGWb3tmEEpl3CLP3cStInSbVHSg0QWOGQzNq8pSID4JkpeV2mPqlMDLrm0/Vw==}
     dev: false
 
+  /sdp/3.2.0:
+    resolution: {integrity: sha512-d7wDPgDV3DDiqulJjKiV2865wKsJ34YI+NDREbm+FySq6WuKOikwyNQcm+doLAZ1O6ltdO0SeKle2xMpN3Brgw==}
+    dev: false
+
   /semver/7.5.0:
     resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==}
     engines: {node: '>=10'}
@@ -834,6 +840,13 @@ packages:
     dependencies:
       rtcpeerconnection-shim: 1.2.15
       sdp: 2.12.0
+    dev: false
+
+  /webrtc-adapter/8.2.2:
+    resolution: {integrity: sha512-jQWwqiAEAFZamWliJo0Q+dIC6ZMJ8BgCFvW/oXWVFby1Nw14dOUfPwZ3lVe4nafDXdTyCUT7xfLt5xXiioXUCQ==}
+    engines: {node: '>=6.0.0', npm: '>=3.10.0'}
+    dependencies:
+      sdp: 3.2.0
     dev: false
 
   /yallist/4.0.0:
