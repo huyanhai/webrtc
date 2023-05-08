@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import Peer from './components/Peer.vue'
+import VConsole from 'vconsole';
+
+new VConsole();
 </script>
 
 <template>

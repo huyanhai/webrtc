@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "peerjs": "^1.4.7",
+    "vconsole": "^3.15.0",
     "vue": "^3.2.47"
   },
   "devDependencies": {
