@@ -61,9 +61,10 @@ async function getLocalStream(constraints: MediaStreamConstraints) {
   const call = peer.value?.call(remoteId.value, stream);
 
   video1.value.srcObject = stream;
-
+  video1.value.play()
   call?.on("stream", (remoteStream) => {
     video2.value.srcObject = remoteStream;
+    video2.value.play()
   });
 }
 
@@ -102,23 +103,17 @@ const initPeer = () => {
       audio: false,
     });
     video1.value.srcObject = stream;
+    video1.value.play()
     call.answer(stream);
     call.on("stream", (remoteStream) => {
       video2.value.srcObject = remoteStream;
+      video2.value.play()
     });
   });
 };
 
 onMounted(() => {
   initPeer();
-  document.addEventListener(
-    "WeixinJSBridgeReady",
-    () => {
-      video1.value.play()
-      video2.value.play()
-    },
-    false
-  );
 });
 </script>
 
