@@ -94,7 +94,7 @@ const initPeer = () => {
   peer.value.on("connection", (conn) => {
     conn.on("data", (data) => {
       console.log("data", data);
-      messages.value.push(data);
+      messages.value.push(data as string);
     });
   });
 
